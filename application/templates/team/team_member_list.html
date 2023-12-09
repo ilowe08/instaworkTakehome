@@ -1,0 +1,110 @@
+<!--{% load static %}-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: grey;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .member:hover {
+            color: brown;
+        }
+
+        .add-member-link {
+            display: flex;
+            margin-top: 20px;
+            font-size: 3rem;
+            justify-content: end;
+        }
+
+
+        .card {
+            color: grey;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .info {
+            color: black;
+            font-weight: bold;
+            font-size: 1.25em;
+        }
+
+        .icon {
+            margin-right: 20px;
+        }
+
+        body {
+            background-color: #e0dac9;
+        }
+
+        .container {
+            background-color: #f9f8eb;
+            width: 500px;
+            padding: 5px 30px;
+
+        }
+    </style>
+</head>
+<body >
+    <div class="container">
+  <a class="add-member-link" href="{% url 'team_member_add' %}">+</a>
+  <h1>Team Members</h1>
+  <h2>You have {{ team_members.count }} members.</h2>
+  <ul>
+    {% for member in team_members %}
+      <li>
+          <a class="member" href="{% url 'team_member_edit' member.pk %}">
+              <div class="card">
+                  <div class="icon">
+                    <i class="fa-solid fa-circle-user fa-2xl"></i>
+                  </div>
+                  <div class="person">
+                      <p class="info">{{ member.first_name }} {{ member.last_name }} {% if member.is_admin %}(Admin){% endif %}</p>
+                      <p>{{ member.phone_number }}</p>
+                      <p>{{ member.email }}</p>
+                  </div>
+
+              </div>
+          </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+</body>
+
+</html>
+
+

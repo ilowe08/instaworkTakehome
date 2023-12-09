@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ action }} Team Member</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0dac9;
+            margin: 20px;
+        }
+
+        h2 {
+            color: grey;
+        }
+
+        .container {
+            background-color: #f9f8eb;
+            width: 500px;
+            padding: 5px 30px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .save-button {
+            background-color: #008000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background-color: #006400;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #b02a37;
+        }
+
+        .back-to-list-link {
+            display: block;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #007BFF;
+        }
+
+        .admin-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ action }} Team Member</h1>
+        {% if action == 'Edit' %}
+            <h2>Edit contact info, location and role.</h2>
+        {% endif %}
+        {% if action == 'Add' %}
+            <h2>Set email, location and role.</h2>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="save-button" type="submit" value="Save">
+        </form>
+        {% if action == 'Edit' %}
+            <form method="post" action="{% url 'team_member_delete' team_member.pk %}" onsubmit="return confirm('Are you sure you want to delete this team member?');">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="delete-button">
+            </form>
+        {% endif %}
+        <a href="{% url 'team_member_list' %}" class="back-to-list-link">Back to List</a>
+    </div>
+</body>
+</html>
+
