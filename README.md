@@ -1,6 +1,6 @@
 # Team Management Project
 
-This project is a simple team member management application built with Django. It allows users to view, edit, add, and delete team members.
+This team member management application is built with Django. It allows users to view, edit, add, and delete team members.
 
 ## Features
 
