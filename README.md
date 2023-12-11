@@ -48,20 +48,28 @@ This project is a simple team member management application built with Django. I
     ```bash
     pip install -r requirements.txt
     ```
+6. Navigate to the directory
 
-6. Apply database migrations:
+   ```bash
+    cd instaworkTakehome
+    ```
 
+7. Apply database migrations:
+
+    ```bash
+    python manage.py makemigrations
+    ```
     ```bash
     python manage.py migrate
     ```
 
-7. Run the development server:
+8. Run the development server:
 
     ```bash
     python manage.py runserver
     ```
 
-8. Open the project in your web browser at http://localhost:8000/application.
+9. Open the project in your web browser at http://localhost:8000/application.
 
 ## Usage
 
