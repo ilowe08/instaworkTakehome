@@ -4,12 +4,6 @@ from .forms import TeamMemberForm
 
 
 # Create your views here.
-# team_management_app/views.py
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import TeamMember
-from .forms import TeamMemberForm
-
-
 def team_member_list(request):
     team_members = TeamMember.objects.all()
     return render(request, 'team/team_member_list.html', {'team_members': team_members})
